@@ -63,7 +63,7 @@ public class numberList{
             int sum = rest;
             if (haleOrignal != null) { sum += haleOrignal.getValue(); haleOrignal = haleOrignal.getForrige(); }
             if (haleOther != null) { sum += haleOther.getValue(); haleOther = haleOther.getForrige(); }
-            result.addFirst(sum % 10);   // prepend, so the order comes out right
+            result.addFirst(sum % 10);
             rest = sum / 10;
         }
         return result;

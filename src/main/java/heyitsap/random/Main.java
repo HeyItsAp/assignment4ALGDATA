@@ -24,6 +24,7 @@ public static void main(String[] args) {
     b.getFullList();
 
     numberList sum = a.additionWithAnotherList(b);
+    System.out.println(" ");
     sum.getFullList();
 }
 
