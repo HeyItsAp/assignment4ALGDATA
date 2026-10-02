@@ -42,18 +42,31 @@ public class numberList{
         }
         return list;
     }
+    public void addFirst(int value) {     // add at the head
+        numberNode nyNode = new numberNode(value);
+        if (hode == null) {
+            hode = hale = nyNode;
+        } else {
+            nyNode.setNeste(hode);
+            hode.setForrige(nyNode);
+            hode = nyNode;
+        }
+    }
 
-    public void additionWithAnotherList(numberList otherList){
+    public numberList additionWithAnotherList(numberList otherList){
+        numberList result = new numberList();
         numberNode haleOrignal = hale;
         numberNode haleOther = otherList.getTail();
-        StringBuilder numberString = new StringBuilder();
         int rest = 0;
-        while( haleOrignal != null && haleOther != null){
-            int sum = haleOrignal.getValue() + haleOther.getValue() + rest;
+
+        while( haleOrignal != null || haleOther != null || rest > 0){
+            int sum = rest;
+            if (haleOrignal != null) { sum += haleOrignal.getValue(); haleOrignal = haleOrignal.getForrige(); }
+            if (haleOther != null) { sum += haleOther.getValue(); haleOther = haleOther.getForrige(); }
+            result.addFirst(sum % 10);   // prepend, so the order comes out right
             rest = sum / 10;
-            numberString.append(sum%10); haleOrignal = haleOrignal.getForrige(); haleOther = haleOther.getForrige();
         }
-        System.out.println(numberString);
+        return result;
     }
 
     public numberNode getHead() {
