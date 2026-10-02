@@ -1,25 +1,37 @@
 package heyitsap.random;
 
 public class treNode {
-    private treNode venstre;
-    private treNode høyre;
+    private treNode left;
+    private treNode right;
     private int value;
 
-    public treNode(treNode venstre, treNode høyre, int value){
-        this.venstre = venstre;
-        this.høyre = høyre;
+    public treNode(int value){
+        this.left = null;
+        this.right = null;
         this.value = value;
     }
 
-    public treNode getHøyre() {
-        return høyre;
+    public treNode getLeft() {
+        return left;
     }
 
-    public treNode getVenstre() {
-        return venstre;
+    public treNode getRight() {
+        return right;
     }
 
     public int getValue() {
         return value;
+    }
+
+    public void setRight(treNode right) {
+        this.right = right;
+    }
+
+    public void setLeft(treNode left) {
+        this.left = left;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 }
