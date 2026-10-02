@@ -3,9 +3,9 @@ package heyitsap.random;
 public class treNode {
     private treNode left;
     private treNode right;
-    private int value;
+    private String value;
 
-    public treNode(int value){
+    public treNode(String value){
         this.left = null;
         this.right = null;
         this.value = value;
@@ -19,7 +19,7 @@ public class treNode {
         return right;
     }
 
-    public int getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -31,7 +31,7 @@ public class treNode {
         this.left = left;
     }
 
-    public void setValue(int value) {
+    public void setValue(String value) {
         this.value = value;
     }
 }
