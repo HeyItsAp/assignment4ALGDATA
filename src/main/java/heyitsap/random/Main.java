@@ -1,5 +1,7 @@
 package heyitsap.random;
 
+import java.util.ArrayList;
+
 class treNode {
     private treNode venstre;
     private treNode høyre;
@@ -124,11 +126,22 @@ class numberNode {
     }
 }
 
+private numberList getListFromNumber(int longNumber){
+    numberList list = new numberList();
+    List<Integer> digits = new ArrayList<Integer>();
+    while (longNumber > 0){
+        int digit = longNumber % 10;
+        digits.add(digit);
+        longNumber = longNumber / 10;
+    }
+    Collections.reverse(digits);
+    digits.stream().forEach(x -> list.add(x));
+    return list;
+}
 
 public class Main {
     public static void main() {
         int LongNumber = 987654321;
-        numberList list = new numberList();
 
         while (LongNumber > 0){
             int digit = LongNumber % 10;
@@ -136,13 +149,7 @@ public class Main {
             LongNumber = LongNumber / 10;
         }
 
-        LongNumber = 987654321;
-        numberList list2 = new numberList();
-        while (LongNumber > 0){
-            int digit = LongNumber % 10;
-            list.add(digit);
-            LongNumber = LongNumber / 10;
-        }
+
         list.getFullList();
         System.out.println(" ");
         list2.getFullList();
