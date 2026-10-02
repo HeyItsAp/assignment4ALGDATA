@@ -32,50 +32,57 @@ class tre{
     }
 }
 class numberList{
-    private numberNode head; // As in ###X not X###.
-    private numberNode tail;
+    private numberNode hode; // As in ###X not X###.
+    private numberNode hale;
 
     /**
      * Creates the linked list based on number.
      */
     public numberList(){
-        this.head = null;
-        this.tail = null;
+        this.hode = null;
+        this.hale = null;
+    }
+
+    public void getFullList(){
+        numberNode node = hode;
+        while (node != null) {
+            System.out.print(node.getValue() + " <-> ");
+            node = node.getNeste();
+        }
     }
 
     public void add(int value){
         numberNode nyNode = new numberNode(value);
 
-        if (head == null) {
-            head = nyNode;
-            tail = nyNode;
+        if (hode == null) {
+            hode = nyNode;
+             hale= nyNode;
         } else {
-            nyNode.setForrige(tail);
-            tail.setNeste(nyNode);
-            tail = nyNode;
+            nyNode.setForrige(hale);
+            hale.setNeste(nyNode);
+            hale = nyNode;
         }
-    }
-
-    public void printOutNumber(){
-        numberNode forrige = null;
-        StringBuilder numberString = new StringBuilder();
-        for (numberNode e = head; e != null; e = e.getNeste()){
-            numberString.append(e.getValue());
-        }
-        numberString.reverse();
-        System.out.println(numberString);
     }
 
     public void additionWithAnotherList(numberList otherList){
-        while ()
+        numberNode haleOrignal = hale;
+        numberNode haleOther = otherList.getTail();
+        StringBuilder numberString = new StringBuilder();
+        int rest = 0;
+        while( haleOrignal != null && haleOther != null){
+            int sum = haleOrignal.getValue() + haleOther.getValue() + rest;
+            rest = sum / 10;
+            numberString.append(sum%10); haleOrignal = haleOrignal.getForrige(); haleOther = haleOther.getForrige();
+        }
+        System.out.println(numberString);
     }
 
     public numberNode getHead() {
-        return head;
+        return hode;
     }
 
     public numberNode getTail() {
-        return tail;
+        return hale;
     }
 }
 class numberNode {
@@ -125,10 +132,20 @@ public class Main {
 
         while (LongNumber > 0){
             int digit = LongNumber % 10;
-            System.out.println(digit);
             list.add(digit);
             LongNumber = LongNumber / 10;
         }
-        list.printOutNumber();
+
+        LongNumber = 987654321;
+        numberList list2 = new numberList();
+        while (LongNumber > 0){
+            int digit = LongNumber % 10;
+            list.add(digit);
+            LongNumber = LongNumber / 10;
+        }
+        list.getFullList();
+        System.out.println(" ");
+        list2.getFullList();
+        list.additionWithAnotherList(list2);
     }
 }
