@@ -35,7 +35,7 @@ public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);  // Create a Scanner object
     System.out.println("Enter a random ammount of words with a space inbetween:");
     String line = scanner.nextLine();
-    for (String word : line.split(" ")){
+    for (String word : line.trim().split("\\s+")){
         BinaryWordTre.insert(word);
     }
     System.out.println(BinaryWordTre.toString());

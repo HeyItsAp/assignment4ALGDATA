@@ -7,7 +7,7 @@ import java.util.List;
 public class tre {
     private treNode root;
 
-    public tre (treNode rot){
+    public tre (){
         this.root = null;
     }
 
@@ -18,11 +18,11 @@ public class tre {
     static treNode insertRecusively(treNode node, String value){
         if (node == null) return new treNode(value);
 
-        if (value.compareTo(node.getValue()) == -1){ // if a less than b, left node
-             node.setLeft(insertRecusively(node.getLeft(), value));
-        }
-        else if (value.compareTo(node.getValue()) >= -1){ // if a less than b, left node
+
+        if (value.compareTo(node.getValue()) > 0){ // if a less than b, left node
             node.setRight(insertRecusively(node.getRight(),value));
+        } else if (value.compareTo(node.getValue()) < 0){ // if a comes after b, right node
+            node.setLeft(insertRecusively(node.getLeft(), value));
         }
         return node;
     }
@@ -31,7 +31,6 @@ public class tre {
     /**
      * Breath first Printing
      * @code Uses a queue.
-     * @return
      */
     @Override
     public String toString(){
@@ -54,9 +53,7 @@ public class tre {
                 }
             }
             queue = nextQueue;
-            nextQueue = new ArrayList<>();
             sb.append("\n");
-
         }
         return sb.toString();
     }
