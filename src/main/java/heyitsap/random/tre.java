@@ -34,27 +34,16 @@ public class tre {
      */
     @Override
     public String toString(){
-        if (root == null){
-            return "";
-        }
-        List<treNode> queue = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-        queue.add(root);
-        while (!queue.isEmpty()){
-            List<treNode> nextQueue = new ArrayList<>();
-
-            for (treNode currentnode : queue){
-                sb.append(currentnode.getValue()).append(" ");
-                if (currentnode.getRight() != null){
-                    nextQueue.add(currentnode.getRight());
-                }
-                if (currentnode.getLeft() != null){
-                    nextQueue.add(currentnode.getLeft());
-                }
-            }
-            queue = nextQueue;
-            sb.append("\n");
-        }
+        print(root, 0, sb);
         return sb.toString();
+    }
+    private void print(treNode node, int depth, StringBuilder sb) {
+        if (node == null) {
+            return;
+        }
+        print(node.getRight(), depth + 1, sb);
+        sb.append("    ".repeat(depth)).append(node.getValue()).append("\n");
+        print(node.getLeft(), depth + 1, sb);
     }
 }
