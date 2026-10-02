@@ -1,6 +1,6 @@
 package heyitsap.random;
 
-class numberList{
+public class numberList{
     private numberNode hode; // As in ###X not X###.
     private numberNode hale;
 
@@ -31,6 +31,16 @@ class numberList{
             hale.setNeste(nyNode);
             hale = nyNode;
         }
+    }
+    public static numberList fromString(String digits) {
+        numberList list = new numberList();
+        for (char c : digits.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException("Not a digit: " + c);
+            }
+            list.add(c - '0');
+        }
+        return list;
     }
 
     public void additionWithAnotherList(numberList otherList){

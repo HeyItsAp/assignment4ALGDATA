@@ -1,4 +1,5 @@
-package heyitsap.random;
+
+import heyitsap.random.numberList;
 
 import java.util.ArrayList;
 
@@ -36,12 +37,12 @@ class tre{
 
 
 
-private numberList getListFromNumber(int longNumber){
+private static numberList getListFromNumber(Long longNumber){
     numberList list = new numberList();
     List<Integer> digits = new ArrayList<Integer>();
     while (longNumber > 0){
-        int digit = longNumber % 10;
-        digits.add(digit);
+        Long digit = longNumber % 10;
+        digits.add(Math.toIntExact(digit));
         longNumber = longNumber / 10;
     }
     Collections.reverse(digits);
@@ -50,19 +51,15 @@ private numberList getListFromNumber(int longNumber){
 }
 
 public class Main {
-    public static void main() {
-        int LongNumber = 987654321;
+    public static void main(String[] args) {
+        numberList a = numberList.fromString("99999999999999999999999999");
+        numberList b = numberList.fromString("1");
 
-        while (LongNumber > 0){
-            int digit = LongNumber % 10;
-            list.add(digit);
-            LongNumber = LongNumber / 10;
-        }
-
-
-        list.getFullList();
+        List.getFullList();
         System.out.println(" ");
-        list2.getFullList();
-        list.additionWithAnotherList(list2);
+        List2.getFullList();
+
+        numberList sum = a.additionWithAnotherList(b);
+        sum.getFullList();
     }
 }
