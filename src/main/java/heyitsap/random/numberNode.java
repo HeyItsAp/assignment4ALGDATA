@@ -1,7 +1,6 @@
 package heyitsap.random;
 
 public class numberNode {
-    // Or just use ArrayList
     private numberNode neste;
     private numberNode forrige;
     private int value;

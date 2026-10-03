@@ -18,7 +18,6 @@ public class tre {
     static treNode insertRecusively(treNode node, String value){
         if (node == null) return new treNode(value);
 
-
         if (value.compareTo(node.getValue()) > 0){ // if a less than b, left node
             node.setRight(insertRecusively(node.getRight(),value));
         } else if (value.compareTo(node.getValue()) < 0){ // if a comes after b, right node
