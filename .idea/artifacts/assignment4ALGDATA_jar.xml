@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="assignment4ALGDATA:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/assignment4ALGDATA_jar</output-path>
+    <root id="archive" name="assignment4ALGDATA.jar">
+      <element id="module-output" name="assignment4ALGDATA" />
+    </root>
+  </artifact>
+</component>
